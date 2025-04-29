@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -28,11 +29,25 @@ import BillingList from './dashboard/bills/BillingList';
 import DeleteAppointmentBill from './dashboard/bills/DeleteAppointmentBill';
 
 const App = () => {
+=======
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Dashboard from "./Dashboard/Dashboard.js";
+import Signup from "./Authentication/Signup.js";
+import Login from "./Authentication/login.js";
+import PrescriptionSearch from "./Dashboard/PrescriptionSearch.js";  // 🔥 Fixed import
+import GenerateBill from "./Dashboard/GenerateBill.js";
+import EditMedicines from "./Dashboard/EditMedicines.jsx";
+import ManageMedicine from "./Dashboard/ManageMedicine.js";  // Already correct
+
+function App() {
+>>>>>>> 6b41202 (Initial commit)
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+<<<<<<< HEAD
 
         {/* Dashboard route */}
         <Route path="/dashboard" element={<Dashboard />} />
@@ -60,5 +75,17 @@ const App = () => {
     </Router>
   );
 };
+=======
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/prescriptions" element={<PrescriptionSearch />} />  {/* 🔥 Fixed usage */}
+        <Route path="/generate-bill" element={<GenerateBill />} />
+        <Route path="/editmedicine" element={<EditMedicines />} />  {/* 🔥 Optional: path lowercase */}
+        <Route path="/managemedicine" element={<ManageMedicine />} />  {/* 🔥 Optional: path lowercase */}
+        {/* <Route path="/ViewBill" element={<ViewBill/>}/> */}
+      </Routes>
+    </Router>
+  );
+}
+>>>>>>> 6b41202 (Initial commit)
 
 export default App;

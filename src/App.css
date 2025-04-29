@@ -36,6 +36,7 @@
     transform: rotate(360deg);
   }
 }
+<<<<<<< HEAD
 
 body {
   background-image: url('/clinic-bg.jpeg'); /* assuming the image is in public/ */
@@ -44,3 +45,5 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
 }
+=======
+>>>>>>> 6b41202 (Initial commit)
