@@ -158,7 +158,7 @@ function App() {
       <Route
         path="/DoctorDashboard"
         element={
-          <PrivateRoute allowedRoles={["Doctor"]}>
+          <PrivateRoute allowedRoles={["doctor"]}>
             <DoctorDashboard />
           </PrivateRoute>
         }
@@ -166,25 +166,25 @@ function App() {
       <Route
         path="/Doctorinfo"
         element={
-          <PrivateRoute allowedRoles={["Doctor"]}>
+          <PrivateRoute allowedRoles={["doctor"]}>
             <AddInformDoctor />
           </PrivateRoute>
         }
       />
 
-      <Route path="/Viewinfo" element={<PrivateRoute allowedRoles={['Doctor']}> <ViewInfoDoctor/> </PrivateRoute>} />
-      <Route path="/EditInfo/:id" element={<PrivateRoute allowedRoles={['Doctor']}><EditInfoDoctor/></PrivateRoute>}/>
-      <Route path="/Addprescription" element={<PrivateRoute allowedRoles={['Doctor']}><AddPrescription/></PrivateRoute>}/>
-      <Route path="/ViewPrescription" element={<PrivateRoute allowedRoles={['Doctor']}><PrescriptionView/></PrivateRoute>}/>
-      <Route path="/EditPrescription/:id" element={<PrivateRoute allowedRoles={['Doctor']}><EditPrescription/></PrivateRoute>} />
-      <Route path="/AddConsultation" element={<PrivateRoute allowedRoles={['Doctor']}><AddConsultation/></PrivateRoute>} />
-      <Route path="/ViewConsultation" element={<PrivateRoute allowedRoles={['Doctor']}><ViewConsultation/></PrivateRoute>}/>
-      <Route path="/Editconsultation/:consultationId" element={<PrivateRoute allowedRoles={['Doctor']}><EditConsultation/></PrivateRoute>}/>
-      <Route path="/CreateLabReport" element={<PrivateRoute allowedRoles={['Doctor']}><CreateLabReport/></PrivateRoute>}/>
-      <Route path="/ViewLabReport" element={<PrivateRoute allowedRoles={['Doctor']}><ViewLabReport/></PrivateRoute>} />
-      <Route path="/ViewHistory" element={<PrivateRoute allowedRoles={['Doctor']}><ViewPatientHistory/></PrivateRoute>} />
-      <Route path="/AddHistory" element={<PrivateRoute allowedRoles={['Doctor']}><AddPatientHistory/></PrivateRoute>} />
-      <Route path="/EditHistory/:id" element={<PrivateRoute allowedRoles={['Doctor']}><EditPatientHistory/></PrivateRoute>} />
+      <Route path="/Viewinfo" element={<PrivateRoute allowedRoles={['doctor']}> <ViewInfoDoctor/> </PrivateRoute>} />
+      <Route path="/EditInfo/:id" element={<PrivateRoute allowedRoles={['doctor']}><EditInfoDoctor/></PrivateRoute>}/>
+      <Route path="/Addprescription" element={<PrivateRoute allowedRoles={['doctor']}><AddPrescription/></PrivateRoute>}/>
+      <Route path="/ViewPrescription" element={<PrivateRoute allowedRoles={['doctor']}><PrescriptionView/></PrivateRoute>}/>
+      <Route path="/EditPrescription/:id" element={<PrivateRoute allowedRoles={['doctor']}><EditPrescription/></PrivateRoute>} />
+      <Route path="/AddConsultation" element={<PrivateRoute allowedRoles={['doctor']}><AddConsultation/></PrivateRoute>} />
+      <Route path="/ViewConsultation" element={<PrivateRoute allowedRoles={['doctor']}><ViewConsultation/></PrivateRoute>}/>
+      <Route path="/Editconsultation/:consultationId" element={<PrivateRoute allowedRoles={['doctor']}><EditConsultation/></PrivateRoute>}/>
+      <Route path="/CreateLabReport" element={<PrivateRoute allowedRoles={['doctor']}><CreateLabReport/></PrivateRoute>}/>
+      <Route path="/ViewLabReport" element={<PrivateRoute allowedRoles={['doctor']}><ViewLabReport/></PrivateRoute>} />
+      <Route path="/ViewHistory" element={<PrivateRoute allowedRoles={['doctor']}><ViewPatientHistory/></PrivateRoute>} />
+      <Route path="/AddHistory" element={<PrivateRoute allowedRoles={['doctor']}><AddPatientHistory/></PrivateRoute>} />
+      <Route path="/EditHistory/:id" element={<PrivateRoute allowedRoles={['doctor']}><EditPatientHistory/></PrivateRoute>} />
     </Routes>
   );
 }

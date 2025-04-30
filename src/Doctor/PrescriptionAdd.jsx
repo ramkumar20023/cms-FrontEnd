@@ -76,7 +76,6 @@ const AddPrescription = () => {
 
     try {
       await axios.post("http://localhost:8000/api/prescription/", data, header);
-      alert("Prescription Added Successfully");
 
       await axios.patch(
         `http://localhost:8000/api/appointments/${selectedAppointment}/`,

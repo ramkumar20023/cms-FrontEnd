@@ -36,21 +36,25 @@ const DoctorDashboard = () => {
         </div>
 
         <ul className="nav-links">
-          <li>
-            <Link to="/Doctorinfo">Doctor Info</Link>
-          </li>
-          <li>
-            <Link to="/Addprescription">Prescription</Link>
-          </li>
-          <li>
-            <Link to="/AddConsultation">Consultation</Link>
-          </li>
-          <li>
-            <Link to="/ViewLabReport">Lab Test Report</Link>
-          </li>
-          <li>
-            <Link to="/ViewHistory">Patient History</Link>
-          </li>
+          {role === "doctor" && (
+            <>
+              <li>
+                <Link to="/Doctorinfo">Doctor Info</Link>
+              </li>
+              <li>
+                <Link to="/Addprescription">Prescription</Link>
+              </li>
+              <li>
+                <Link to="/AddConsultation">Consultation</Link>
+              </li>
+              <li>
+                <Link to="/ViewLabReport">Lab Test Report</Link>
+              </li>
+              <li>
+                <Link to="/ViewHistory">Patient History</Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
       <div className="section">

@@ -28,6 +28,7 @@ const Login = () => {
       localStorage.setItem("token", res?.data?.access);
       localStorage.setItem("username", res.data.username);
       localStorage.setItem("role", res.data.role);
+      
       setLoading(false);
       setAlert({ message: "Login Successfully!", type: "success" });
 
@@ -36,7 +37,7 @@ const Login = () => {
           case "Admin":
             navigate("/dashboard");
             break;
-          case "Doctor":
+          case "doctor":
             navigate("/DoctorDashboard");
             break;
           case "Receptionist":

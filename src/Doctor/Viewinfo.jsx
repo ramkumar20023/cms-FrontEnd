@@ -4,6 +4,7 @@ import logo from "../Images/Health-Logo.png";
 import "../Dashboard/common.css";
 import axios from "axios";
 import { TablePagination } from "@mui/material";
+import { Modal, Button } from "react-bootstrap";
 
 const ViewInfoDoctor = () => {
   const [info, setInfo] = useState([]);
@@ -14,8 +15,8 @@ const ViewInfoDoctor = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-
-  // const navigate = useNavigate();
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [doctorToDelete, setDoctorToDelete] = useState(null);
 
   useEffect(() => {
     if (errorMsg || successMsg) {
@@ -62,6 +63,7 @@ const ViewInfoDoctor = () => {
     );
     setFilteredInfo(result);
   };
+
   useEffect(() => {
     if (searchTerm.trim() === "") {
       setFilteredInfo(info);
@@ -76,6 +78,41 @@ const ViewInfoDoctor = () => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
+  const handleDeleteClick = (doctor) => {
+    setDoctorToDelete(doctor);
+    setShowDeleteModal(true);
+  };
+
+  const confirmDelete = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      await axios.delete(
+        `http://localhost:8000/api/doctorinform/${doctorToDelete.informId}/`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setSuccessMsg(`${doctorToDelete.DoctorName} deleted successfully`);
+      // Refresh the data
+      const infoRes = await axios.get(
+        "http://localhost:8000/api/doctorinform/",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setInfo(infoRes.data);
+      setFilteredInfo(infoRes.data);
+    } catch (error) {
+      setErrorMsg("Failed to delete doctor information.");
+    }
+    setShowDeleteModal(false);
+  };
+
   return (
     <div>
       {/* Navbar */}
@@ -162,6 +199,12 @@ const ViewInfoDoctor = () => {
                           >
                             Edit
                           </Link>
+                          <button 
+                            className="btn btn-sm btn-danger"
+                            onClick={() => handleDeleteClick(el)}
+                          >
+                            Delete
+                          </button>
                         </td>
                       </tr>
                     ))}
@@ -193,6 +236,24 @@ const ViewInfoDoctor = () => {
           </div>
         </div>
       </div>
+
+      {/* Delete Confirmation Modal */}
+      <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)} centered>
+        <Modal.Header closeButton className="text-white bg-primary p-2">
+          <Modal.Title>Delete Info</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Are you sure you want to delete this <span className="text-danger">Dr. {doctorToDelete?.DoctorName}?</span>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={confirmDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
