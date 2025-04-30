@@ -172,7 +172,6 @@ const ViewPatientHistory = () => {
       <h3 className="text-center text-primary mb-3">Patient History</h3>
       </div>
 
-      {/* Search bar */}
       <div className="container mt-4">
         <div className="d-flex justify-content-end mb-3">
           <input
@@ -259,7 +258,6 @@ const ViewPatientHistory = () => {
         />
       </div>
 
-      {/* Delete Confirmation Modal */}
       <Modal
         show={showModal}
         onHide={() => setShowModal(false)}
