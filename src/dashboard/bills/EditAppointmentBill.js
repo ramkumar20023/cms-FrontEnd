@@ -178,7 +178,7 @@ const EditAppointmentBill = () => {
                       value={serviceCharge}
                       onChange={(e) => setServiceCharge(e.target.value)}
                       required
-                      step="0.01"
+                      step="1.00"
                     />
                     {errors.serviceCharge && (
                       <div className="text-danger">{errors.serviceCharge}</div>

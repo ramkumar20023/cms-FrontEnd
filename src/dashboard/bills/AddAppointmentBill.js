@@ -11,13 +11,13 @@ const AddAppointmentBill = () => {
   const [appointmentId, setAppointmentId] = useState("");
   const [consultantDoctorId, setConsultantDoctorId] = useState("");
   const [consultantFeeDisplay, setConsultantFeeDisplay] = useState("");
-  
+  const [serviceCharge, setServiceCharge] = useState(100); // Default value
+
   const [appointments, setAppointments] = useState([]);
   const [errors, setErrors] = useState({});
   const [globalError, setGlobalError] = useState("");
 
   const navigate = useNavigate();
-  const serviceCharge = 100; // Constant service charge value
 
   useEffect(() => {
     const fetchAppointments = async () => {
@@ -161,7 +161,7 @@ const AddAppointmentBill = () => {
                     type="number"
                     className="form-control"
                     value={serviceCharge}
-                    readOnly
+                    onChange={(e) => setServiceCharge(Number(e.target.value))}
                     required
                   />
                   {errors.serviceCharge && <div className="text-danger">{errors.serviceCharge}</div>}

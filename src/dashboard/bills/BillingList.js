@@ -110,132 +110,135 @@ const BillingList = () => {
   return (
     <div>
       <div className="navbar">
-                          <div className="logo-container">
-                            <img src={logo} alt="Logo" className="logo-img" />
-                            <span className="logo-text">KIMS</span>
-                          </div>
-                  
-                          <ul className="nav-links">
-                            <li>
-                              <Link to="/dashboard">Dashboard</Link>
-                            </li>
-                            <li>
-                              <Link to="/patients">View Patient</Link>
-                            </li>
-                            <li>
-                              <Link to="/" onClick={handleLogout}>
-                                Logout
-                              </Link>
-                            </li>
-                          </ul>
-                        </div>
-    
-    <div className="container mt-4">
-      <BackButton />
-      <div className="card shadow-lg border-0 rounded-4 p-4 mt-5">
-        <div className="d-flex justify-content-between align-items-center mb-4">
-          <h2 className="text-center fw-bold mb-4 text-primary">
-            <FaFileInvoice className="me-2" />
-             Appointment Bills</h2>
-          <Link to="/billsadd" className="btn btn-success px-4 shadow-sm">
-            <i className="fas fa-plus me-2"></i> Add Bill
-          </Link>
+        <div className="logo-container">
+          <img src={logo} alt="Logo" className="logo-img" />
+          <span className="logo-text">KIMS</span>
         </div>
 
-        <div className="d-flex justify-content-between align-items-center mb-3">
-          <input
-            type="text"
-            placeholder="Search by Patient, Doctor, or Bill ID"
-            className="form-control shadow-sm w-50"
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              setCurrentPage(1);
-            }}
-          />
-          <select
-            className="form-select w-auto"
-            value={billsPerPage}
-            onChange={(e) => {
-              setBillsPerPage(Number(e.target.value));
-              setCurrentPage(1);
-            }}
-          >
-            {[5, 10, 15, 20].map((num) => (
-              <option key={num} value={num}>{num} per page</option>
-            ))}
-          </select>
-        </div>
-
-        {loading ? (
-          <div className="text-center mt-5">Loading bills...</div>
-        ) : (
-          <>
-            <table className="table table-hover table-striped">
-              <thead className="table-dark">
-                <tr>
-                  <th>SL No</th>
-                  <th onClick={() => handleSort("CreatedAt")} className="clickable-column">
-                    Date {sortColumn === "CreatedAt" && (sortOrder === "asc" ? "↑" : "↓")}
-                  </th>
-                  <th>Patient</th>
-                  <th>Doctor</th>
-                  <th>Total</th>
-                  <th>Appointment Token</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {processedBills.length > 0 ? (
-                  processedBills.map((bill, index) => (
-                    <tr key={bill.BillId}>
-                      <td>{(currentPage - 1) * billsPerPage + index + 1}</td>
-                      <td>{new Date(bill.CreatedAt).toLocaleString()}</td>
-                      <td>{getPatientName(bill.Appointment)}</td>
-                      <td>{getDoctorName(bill.Appointment)}</td>
-                      <td>₹{bill.TotalCost}</td>
-                      <td>{bill.Token}</td>
-                      <td>
-                        <Link to={`/bills/edit/${bill.BillId}`} className="btn btn-primary btn-sm me-2">
-                          Edit
-                        </Link>
-                        <Link to={`/bills/delete/${bill.BillId}`} className="btn btn-danger btn-sm">
-                          Delete
-                        </Link>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="7" className="text-center text-muted">No bills found.</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-
-            {processedBills.length > 0 && (
-              <div className="pagination d-flex justify-content-center mt-4">
-                <button
-                  className="btn btn-secondary me-2 shadow-sm"
-                  disabled={currentPage === 1}
-                  onClick={() => setCurrentPage(currentPage - 1)}
-                >
-                  Previous
-                </button>
-                <span className="align-self-center">{currentPage} / {totalPages}</span>
-                <button
-                  className="btn btn-secondary ms-2 shadow-sm"
-                  disabled={currentPage === totalPages}
-                  onClick={() => setCurrentPage(currentPage + 1)}
-                >
-                  Next
-                </button>
-              </div>
-            )}
-          </>
-        )}
+        <ul className="nav-links">
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <Link to="/patients">View Patient</Link>
+          </li>
+          <li>
+            <Link to="/" onClick={handleLogout}>
+              Logout
+            </Link>
+          </li>
+        </ul>
       </div>
-    </div>
+
+      <div className="container mt-4">
+        <BackButton />
+        <div className="card shadow-lg border-0 rounded-4 p-4 mt-5">
+          <div className="d-flex justify-content-between align-items-center mb-4">
+            <h2 className="text-center fw-bold mb-4 text-primary">
+              <FaFileInvoice className="me-2" />
+              Appointment Bills</h2>
+            <Link to="/billsadd" className="btn btn-success px-4 shadow-sm">
+              <i className="fas fa-plus me-2"></i> Add Bill
+            </Link>
+          </div>
+
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <input
+              type="text"
+              placeholder="Search by Patient, Doctor, or Bill ID"
+              className="form-control shadow-sm w-50"
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setCurrentPage(1);
+              }}
+            />
+            <select
+              className="form-select w-auto"
+              value={billsPerPage}
+              onChange={(e) => {
+                setBillsPerPage(Number(e.target.value));
+                setCurrentPage(1);
+              }}
+            >
+              {[5, 10, 15, 20].map((num) => (
+                <option key={num} value={num}>{num} per page</option>
+              ))}
+            </select>
+          </div>
+
+          {loading ? (
+            <div className="text-center mt-5">Loading bills...</div>
+          ) : (
+            <>
+              <table className="table table-hover table-striped">
+                <thead className="table-dark">
+                  <tr>
+                    <th>SL No</th>
+                    <th onClick={() => handleSort("CreatedAt")} className="clickable-column">
+                      Date {sortColumn === "CreatedAt" && (sortOrder === "asc" ? "↑" : "↓")}
+                    </th>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Total</th>
+                    <th>Appointment Token</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {processedBills.length > 0 ? (
+                    processedBills.map((bill, index) => (
+                      <tr key={bill.BillId}>
+                        <td>{(currentPage - 1) * billsPerPage + index + 1}</td>
+                        <td>{new Date(bill.CreatedAt).toLocaleString()}</td>
+                        <td>{getPatientName(bill.Appointment)}</td>
+                        <td>{getDoctorName(bill.Appointment)}</td>
+                        <td>₹{bill.TotalCost}</td>
+                        <td>{bill.Token}</td>
+                        <td>
+                          <Link to={`/bills/view/${bill.BillId}`} className="btn btn-info btn-sm me-2">
+                            View
+                          </Link>
+                          <Link to={`/bills/edit/${bill.BillId}`} className="btn btn-primary btn-sm me-2">
+                            Edit
+                          </Link>
+                          <Link to={`/bills/delete/${bill.BillId}`} className="btn btn-danger btn-sm">
+                            Delete
+                          </Link>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="7" className="text-center text-muted">No bills found.</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+
+              {processedBills.length > 0 && (
+                <div className="pagination d-flex justify-content-center mt-4">
+                  <button
+                    className="btn btn-secondary me-2 shadow-sm"
+                    disabled={currentPage === 1}
+                    onClick={() => setCurrentPage(currentPage - 1)}
+                  >
+                    Previous
+                  </button>
+                  <span className="align-self-center">{currentPage} / {totalPages}</span>
+                  <button
+                    className="btn btn-secondary ms-2 shadow-sm"
+                    disabled={currentPage === totalPages}
+                    onClick={() => setCurrentPage(currentPage + 1)}
+                  >
+                    Next
+                  </button>
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

@@ -26,6 +26,7 @@ import AddAppointmentBill from './dashboard/bills/AddAppointmentBill';
 import EditAppointmentBill from './dashboard/bills/EditAppointmentBill';
 import BillingList from './dashboard/bills/BillingList';
 import DeleteAppointmentBill from './dashboard/bills/DeleteAppointmentBill';
+import BillView from './dashboard/bills/BillView';
 
 const App = () => {
   return (
@@ -53,6 +54,7 @@ const App = () => {
         <Route path="/appointments" element={<AppointmentList />} />
 
         <Route path="/billsadd" element={<AddAppointmentBill />} />
+        <Route path="/bills/view/:billId" element={<BillView />} />
         <Route path="/bills/edit/:id" element={<EditAppointmentBill />} />
         <Route path="/bills/delete/:id" element={<DeleteAppointmentBill />} />
         <Route path="/bills" element={<BillingList />} />
