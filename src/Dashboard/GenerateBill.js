@@ -5,7 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "../Images/Health-Logo.png.jpeg";
 
 const GenerateBill = () => {
-  const [billNo, setBillNo] = useState('');
+  // Automatically generate a 6-digit bill number
+  const [billNo, setBillNo] = useState(() => {
+    return Math.floor(100000 + Math.random() * 900000).toString(); // Generate a random 6-digit number
+  });
+
   const [medicineName, setMedicineName] = useState('');
   const [quantity, setQuantity] = useState('');
   const [pricePerUnit, setPricePerUnit] = useState('');
@@ -114,7 +118,7 @@ const GenerateBill = () => {
           <span className="logo-text ms-2 h4 mb-0">KIMS</span>
         </div>
         <ul className="nav-links list-unstyled d-flex mb-0">
-          <li className="me-3"><Link className="text-decoration-none" to="/dashboard">Dashboard</Link></li>
+          <li className="me-3"><Link className="text-decoration-none" to="/pharmdashboard">Dashboard</Link></li>
           <li><Link className="text-decoration-none" to="/" onClick={handleLogout}>Logout</Link></li>
         </ul>
       </div>
@@ -125,7 +129,12 @@ const GenerateBill = () => {
         <div className="mb-3 row">
           <div className="col-md-2">
             <label className="form-label">Bill No</label>
-            <input type="text" className="form-control" value={billNo} onChange={(e) => setBillNo(e.target.value)} />
+            <input
+              type="text"
+              className="form-control"
+              value={billNo}
+              readOnly // Make the input read-only since it's auto-generated
+            />
           </div>
           <div className="col-md-2">
             <label className="form-label">MR No</label>

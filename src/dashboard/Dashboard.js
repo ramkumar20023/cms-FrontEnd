@@ -1,5 +1,5 @@
 import React from "react";
-import "../Dashboard/style.css";
+import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../Images/Health-Logo.png.jpeg";
 // cms-FrontEnd/src/Images/Health-Logo.png.jpeg
@@ -41,13 +41,13 @@ const Dashboard = () => {
         <ul className="nav-links">
         
               <li>
-                <Link to="/ManageMedicine">Manage Medicine</Link>
-              </li>
-              <li>
-                <Link to="/generate-bill">Generate Bill</Link>
-              </li>
-              <li>
                 <Link to="/prescriptions">Prescriptions</Link>
+              </li>
+              <li>
+                <Link to="/ManageMedicine">ManageMedicine</Link>
+              </li>
+              <li>
+                <Link to="/generate-bill">GenerateBill</Link>
               </li>
   
         </ul>

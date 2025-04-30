@@ -131,8 +131,8 @@ const ManageMedicine = () => {
           <span className="logo-text">KIMS</span>
         </div>
         <ul className="nav-links">
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/EditMedicine">View Medicines</Link></li>
+          <li><Link to="/pharmdashboard">Dashboard</Link></li>
+          <li><Link to="/EditMedicine">View Stock</Link></li>
           <li><Link to="/" onClick={handleLogout}>Logout</Link></li>
         </ul>
       </div>

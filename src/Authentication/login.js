@@ -21,7 +21,7 @@ const Login = () => {
       
       localStorage.setItem("token", response.data.access);
       alert("Login Successful!");
-      navigate("/dashboard"); // Redirect to the dashboard after login
+      navigate("/pharmdashboard"); // Redirect to the dashboard after login
     } catch (error) {
       setErrorMessage(error.response?.data?.message || "Invalid username or password!");
     }

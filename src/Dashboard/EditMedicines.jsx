@@ -127,7 +127,7 @@ const EditMedicines = () => {
           <span className="logo-text fs-4 ms-2 fw-bold text-primary">KIMS</span>
         </div>
         <ul className="nav-links list-unstyled d-flex gap-4 mb-0">
-          <li><Link className="text-decoration-none" to="/dashboard">Dashboard</Link></li>
+          <li><Link className="text-decoration-none" to="/pharmdashboard">Dashboard</Link></li>
           <li><Link className="text-decoration-none text-danger" to="/" onClick={handleLogout}>Logout</Link></li>
         </ul>
       </div>
